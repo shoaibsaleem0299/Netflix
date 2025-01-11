@@ -1,0 +1,174 @@
+# Learn more about gitignore: https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# Frontend (React Native Expo)
+frontend/node_modules/
+frontend/.expo/
+frontend/dist/
+frontend/web-build/
+frontend/expo-env.d.ts
+
+# Native build artifacts
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro bundler
+frontend/.metro-health-check*
+
+# Debug logs
+frontend/npm-debug.*
+frontend/yarn-debug.*
+frontend/yarn-error.*
+
+# macOS specific
+.DS_Store
+*.pem
+
+# Local environment files
+.env*.local
+
+# TypeScript build info
+frontend/*.tsbuildinfo
+
+# Backend (Node.js)
+backend/node_modules/
+backend/.npm/
+backend/.yarn/
+backend/.eslintcache
+backend/.stylelintcache
+backend/.cache
+backend/.parcel-cache
+backend/.next
+backend/out
+backend/.nuxt
+backend/dist
+
+# Logs
+backend/logs
+backend/*.log
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
+backend/lerna-debug.log*
+backend.pnpm-debug.log*
+
+# Diagnostic reports
+backend/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+backend/pids
+backend/*.pid
+backend/*.seed
+backend/*.pid.lock
+
+# Instrumented libs by jscoverage/JSCover
+backend/lib-cov
+
+# Coverage reports
+backend/coverage
+backend/*.lcov
+
+# nyc test coverage
+backend.nyc_output
+
+# Grunt intermediate storage
+backend.grunt
+
+# Bower dependencies
+backend.bower_components
+
+# node-waf configuration
+backend.lock-wscript
+
+# Compiled binary addons
+backend/build/Release
+
+# Dependency directories
+backend/jspm_packages/
+backend/web_modules/
+
+# TypeScript cache
+backend/*.tsbuildinfo
+
+# Optional npm cache
+backend.npm
+
+# Optional eslint cache
+backend.eslintcache
+
+# Optional stylelint cache
+backend.stylelintcache
+
+# Microbundle cache
+backend.rpt2_cache/
+backend.rts2_cache_cjs/
+backend.rts2_cache_es/
+backend.rts2_cache_umd/
+
+# Optional REPL history
+backend.node_repl_history
+
+# npm pack output
+backend*.tgz
+
+# Yarn Integrity file
+backend.yarn-integrity
+
+# dotenv environment variable files
+backend.env
+backend.env.development.local
+backend.env.test.local
+backend.env.production.local
+backend.env.local
+
+# parcel-bundler cache
+backend.cache
+backend.parcel-cache
+
+# Next.js build output
+backend.next
+backend.out
+
+# Nuxt.js build output
+backend.nuxt
+backend.dist
+
+# Gatsby files
+backend.cache/
+
+# vuepress build output
+backend.vuepress/dist
+
+# Docusaurus cache and generated files
+backend.docusaurus
+
+# Serverless directories
+backend.serverless/
+
+# FuseBox cache
+backend.fusebox/
+
+# DynamoDB Local files
+backend.dynamodb/
+
+# TernJS port file
+backend.tern-port
+
+# VSCode test versions
+backend.vscode-test
+
+# Yarn v2 directories
+backend.yarn/cache
+backend.yarn/unplugged
+backend.yarn/build-state.yml
+backend.yarn/install-state.gz
+backend.pnp.*
+
+# Serverless Webpack directories
+backend.webpack/
+
+# SvelteKit build / generate output
+backend.svelte-kit
