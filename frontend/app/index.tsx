@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Link } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -15,6 +16,62 @@ const { height, width } = Dimensions.get("window");
 const Index = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const onLogin = async () => {
+    // Clear previous errors
+    setError("");
+
+    // Validation logic
+    if (!email.trim()) {
+      setError("Email is required");
+      return;
+    }
+    if (!validateEmail(email)) {
+      setError("Invalid email format");
+      return;
+    }
+    if (!password.trim()) {
+      setError("Password is required");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:8000/api/v1/user/login", {
+        email,
+        password,
+      });
+
+      console.log("Response from server:", response.data.message);
+
+      if (response.status === 200) {
+        setError("Login successful!");
+      } else {
+        setError(response.data.message || "Login failed.");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+
+      // Check if it's an AxiosError with a response
+      if (axios.isAxiosError(error) && error.response) {
+        const { status, data } = error.response;
+
+        if (status === 401) {
+          setError(data.message || "Unauthorized! Please check your credentials.");
+        } else {
+          setError(data.message || "Login failed. Please try again.");
+        }
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    }
+  };
+
 
   return (
     <View style={styles.container}>
@@ -49,11 +106,14 @@ const Index = ({ navigation }: any) => {
         autoCorrect={false}
       />
 
+      {/* error message */}
+      {error && <Text style={{ color: "red" }}>{error}</Text>}
+
       {/* Sign In Button */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          console.log("Sign In clicked");
+          onLogin();
         }}
       >
         <Text style={styles.buttonText}>Sign In</Text>
