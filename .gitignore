@@ -35,6 +35,7 @@ frontend/*.tsbuildinfo
 
 # Backend (Node.js)
 backend/node_modules/
+backend/.env
 backend/.npm/
 backend/.yarn/
 backend/.eslintcache
