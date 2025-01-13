@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import axios from "axios";
 import {
@@ -68,6 +68,7 @@ const Register = () => {
 
             // Handle success or failure based on the response
             if (response.status === 200) {
+                router.navigate('/')
                 setError("Registration successful!");
             } else {
                 setError(response.data.message || "Registration failed.");

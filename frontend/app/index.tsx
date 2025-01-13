@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import {
   Image,
@@ -10,6 +10,7 @@ import {
   TextInput,
   Dimensions,
 } from "react-native";
+import { API_END_POINT } from '@/utils/constants.js'
 
 const { height, width } = Dimensions.get("window");
 
@@ -42,7 +43,7 @@ const Index = ({ navigation }: any) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/user/login", {
+      const response = await axios.post(`${API_END_POINT}/login`, {
         email,
         password,
       });
@@ -51,6 +52,7 @@ const Index = ({ navigation }: any) => {
 
       if (response.status === 200) {
         setError("Login successful!");
+        router.navigate('/Components/Home/HomeScreen');
       } else {
         setError(response.data.message || "Login failed.");
       }
